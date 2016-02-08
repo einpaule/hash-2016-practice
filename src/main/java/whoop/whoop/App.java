@@ -2,14 +2,20 @@ package whoop.whoop;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class App {
   public static void main(String[] args) {
     String filename = args[0];
     String fileContents = getFileContents(filename);
 
-    Canvas canvas = Canvas.createFromString(fileContents);
-    System.out.println(canvas);
+    System.out.println(fileContents);
+
+    CanvasStringParser parser = new CanvasStringParser();
+    boolean[][] canvas = parser.parseFromString(fileContents);
+    List<String> commands = new NaiveSolver().solve(canvas);
+
+    System.out.println(commands);
   }
 
   private static String getFileContents(String filename) {

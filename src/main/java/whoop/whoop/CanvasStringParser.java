@@ -3,10 +3,10 @@ package whoop.whoop;
 import java.util.Arrays;
 import java.util.List;
 
-public class Canvas {
+public class CanvasStringParser {
   public final boolean[][] pixels;
 
-  public static Canvas createFromString(String stringRepresentation) {
+  public boolean[][] parseFromString(String stringRepresentation) {
     List<String> rows = Arrays.asList(stringRepresentation.split("\n"));
     String countInformationLine = rows.get(0);
 
@@ -24,7 +24,7 @@ public class Canvas {
       }
     }
 
-    return new Canvas(pixels);
+    return pixels;
   }
 
   private static int getColumnAmount(String firstRow) {
@@ -39,13 +39,17 @@ public class Canvas {
     return rowAmount;
   }
 
-  private Canvas(boolean[][] pixels) {
+  public CanvasStringParser(boolean[][] pixels) {
     this.pixels = pixels;
+  }
+
+  public CanvasStringParser() {
+    this.pixels = new boolean[0][0];
   }
 
   @Override
   public String toString() {
-    String representation = "Canvas [pixels=";
+    String representation = "CanvasStringParser [pixels=";
 
     for (int i = 0; i < pixels.length; i++) {
       representation += Arrays.toString(pixels[i]);
