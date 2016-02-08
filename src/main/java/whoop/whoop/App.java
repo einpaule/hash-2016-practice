@@ -12,7 +12,7 @@ public class App {
     System.out.println(fileContents);
 
     CanvasStringParser parser = new CanvasStringParser();
-    boolean[][] canvas = parser.parseFromString(fileContents);
+    boolean[][] canvas = parser.parse(fileContents);
     List<String> commands = new NaiveSolver().solve(canvas);
 
     System.out.println(commands);
