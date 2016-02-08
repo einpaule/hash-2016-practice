@@ -6,7 +6,7 @@ import java.util.List;
 public class CanvasStringParser {
   public final boolean[][] pixels;
 
-  public boolean[][] parseFromString(String stringRepresentation) {
+  public static boolean[][] parseFromString(String stringRepresentation) {
     List<String> rows = Arrays.asList(stringRepresentation.split("\n"));
     String countInformationLine = rows.get(0);
 
