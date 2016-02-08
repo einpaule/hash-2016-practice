@@ -11,8 +11,7 @@ public class App {
 
     System.out.println(fileContents);
 
-    CanvasStringParser parser = new CanvasStringParser();
-    boolean[][] canvas = parser.parse(fileContents);
+    boolean[][] canvas = CanvasStringParser.parse(fileContents);
     List<String> commands = new NaiveSolver().solve(canvas);
 
     System.out.println(commands);
