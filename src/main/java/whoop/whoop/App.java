@@ -8,7 +8,8 @@ public class App {
     String filename = args[0];
     String fileContents = getFileContents(filename);
 
-    System.out.println(fileContents);
+    Canvas canvas = Canvas.createFromString(fileContents);
+    System.out.println(canvas);
   }
 
   private static String getFileContents(String filename) {
