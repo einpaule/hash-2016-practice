@@ -14,10 +14,10 @@ public class LineSolver implements Solver {
     int canvasWidth = canvas[0].length;
 
     for (int distance = 0; distance < canvas.length + canvas[0].length - 1; distance++) {
-      int startingRowForDistance = Math.max(0, distance - canvasWidth);
-      int startingColumnForDistance = Math.min(distance - 1, canvasWidth - 1);
+      int initialRow = Math.max(0, distance - canvasWidth);
+      int initialColumn = Math.min(distance - 1, canvasWidth - 1);
 
-      for (int row = startingRowForDistance, col = startingColumnForDistance; stillOnDiagonalAndInCanvas(canvasHeight, canvasWidth, row, col); col--, row++) {
+      for (int row = initialRow, col = initialColumn; stillOnDiagonalAndInCanvas(canvasHeight, canvasWidth, row, col); col--, row++) {
         if (isColored(canvas, row, col) && !visited[row][col]) {
           if (isColored(canvas, row, col + 1)) {
             commands.add(markAllToRightwhile(canvas, visited, col, row));

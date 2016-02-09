@@ -25,6 +25,15 @@ public class App {
         divider = ";";
       }
       System.out.println("'");
+
+      System.out.println("Submission content:");
+      System.out.println(commands.size());
+      for (String command : commands) {
+        System.out.println(command);
+      }
+      System.out.println("");
+      System.out.println("_____________________________________________");
+      System.out.println("");
     }
   }
 
