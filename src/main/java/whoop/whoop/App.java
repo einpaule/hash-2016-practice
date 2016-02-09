@@ -6,15 +6,16 @@ import java.util.List;
 
 public class App {
   public static void main(String[] args) {
-    String filename = args[0];
-    String fileContents = getFileContents(filename);
+    for (String filename : args) {
+      String fileContents = getFileContents(filename);
 
-    System.out.println(fileContents);
+      boolean[][] canvas = CanvasStringParser.parse(fileContents);
+      List<String> commands = new LineSolver().solve(canvas);
 
-    boolean[][] canvas = CanvasStringParser.parse(fileContents);
-    List<String> commands = new NaiveSolver().solve(canvas);
-
-    System.out.println(commands);
+      System.out.println("File: " + filename);
+      System.out.println("Commands: " + commands.size());
+      System.out.println();
+    }
   }
 
   private static String getFileContents(String filename) {
