@@ -6,6 +6,9 @@ import java.util.List;
 
 public class App {
   public static void main(String[] args) {
+    if (args.length == 0) {
+      args = new String[] { "logo.in", "learn_and_teach.in", "right_angle.in" };
+    }
     for (String filename : args) {
       String fileContents = getFileContents(filename);
 
@@ -14,7 +17,14 @@ public class App {
 
       System.out.println("File: " + filename);
       System.out.println("Commands: " + commands.size());
-      System.out.println();
+      System.out.print("ruby ./build_image.rb " + canvas.length + " " + canvas[0].length + " '");
+      String divider = "";
+      for (String command : commands) {
+        System.out.print(divider);
+        System.out.print(command);
+        divider = ";";
+      }
+      System.out.println("'");
     }
   }
 
