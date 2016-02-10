@@ -7,6 +7,16 @@ public class LineSolver implements Solver {
 
   @Override
   public List<String> solve(final boolean[][] canvas) {
+    List<Command> commands = getSolutionCommands(canvas);
+
+    List<String> commandStrings = new ArrayList<>();
+    for (Command command : commands) {
+      commandStrings.add(command.toString());
+    }
+    return commandStrings;
+  }
+
+  public List<Command> getSolutionCommands(final boolean[][] canvas) {
     List<Command> commands = new ArrayList<>();
     boolean[][] visited = new boolean[canvas.length][canvas[0].length];
 
@@ -30,12 +40,7 @@ public class LineSolver implements Solver {
         visited[row][col] = true;
       }
     }
-
-    List<String> commandStrings = new ArrayList<>();
-    for (Command command : commands) {
-      commandStrings.add(command.toString());
-    }
-    return commandStrings;
+    return commands;
   }
 
   private boolean stillOnDiagonalAndInCanvas(int canvasHeight, int canvasWidth, int row, int column) {
